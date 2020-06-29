@@ -1,4 +1,4 @@
-# Rsyns SSH Commands
+# Rsync SSH Commands
 
 Action to rsync file to a remote server using SSH.
 
