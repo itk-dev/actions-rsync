@@ -1,0 +1,40 @@
+name: 'rsync files over SSH'
+description: 'Sync files with rsync with ssh private/public keys'
+author: 'itkdev@mkb.aarhus.dk'
+inputs:
+  src:
+    description: "Source directory (default: $GITHUB_WORKSPACE)"
+    required: false
+    default: ''
+  dest:
+    description: "Remote destionation directory"
+    required: true
+  host:
+    description: "FQDN - Server hostname (default: localhost)."
+    required: true
+  user:
+    description: "Remote SSH username (default: deploy)"
+    required: false
+    default: "deploy"
+  port:
+    description: "Remote port number (default 22)."
+    required: false
+    default: "22"
+  key:
+    description: "File Location or string that contains a private key"
+    required: true
+  cert:
+    description: "Public signed certificate"
+    required: true
+  args:
+    description: "rsync parameters"
+    required: false
+    default: "-avz"
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  color: "green"
+  icon: "lock"
