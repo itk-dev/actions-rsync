@@ -21,8 +21,8 @@ eval `ssh-agent -s`
 ssh-add
 
 # Variables.
-SHELL='ssh -o StrictHostKeyChecking=no -o "PubkeyAcceptedKeyTypes +ssh-rsa-cert-v01@openssh.com" -o "PubKeyAcceptedAlgorithms +ssh-rsa-cert-v01@openssh.com" -p ${INPUT_PORT}'
+SHELL='ssh -o StrictHostKeyChecking=no -o "PubkeyAcceptedKeyTypes +ssh-rsa-cert-v01@openssh.com" -o "PubKeyAcceptedAlgorithms +ssh-rsa-cert-v01@openssh.com'
 LOCAL_PATH="$GITHUB_WORKSPACE/$INPUT_SRC"
 
 # Run the rsync command.
-sh -c "rsync $INPUT_ARGS -e '$SHELL' $LOCAL_PATH $INPUT_USER@$INPUT_HOST:$INPUT_DEST"
+sh -c "rsync $INPUT_ARGS -e '$SHELL -p $INPUT_PORT' $LOCAL_PATH $INPUT_USER@$INPUT_HOST:$INPUT_DEST"
